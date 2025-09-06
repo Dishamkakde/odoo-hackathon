@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoFinds - Sustainable Marketplace</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .gradient-bg {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+        }
+        .feature-card {
+            transition: all 0.3s ease;
+        }
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+        .workflow-step {
+            position: relative;
+        }
+        .workflow-step::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            right: -20px;
+            width: 0;
+            height: 0;
+            border-left: 15px solid #10b981;
+            border-top: 10px solid transparent;
+            border-bottom: 10px solid transparent;
+            transform: translateY(-50%);
+        }
+        .workflow-step:last-child::after {
+            display: none;
+        }
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .animate-fade-in {
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 font-sans">
+    <!-- Header -->
+    <header class="gradient-bg text-white py-16">
+        <div class="container mx-auto px-6 text-center">
+            <div class="flex items-center justify-center mb-6">
+                <div class="text-6xl mr-4">🌱</div>
+                <h1 class="text-5xl font-bold">EcoFinds</h1>
+            </div>
+            <p class="text-xl mb-8 max-w-2xl mx-auto">The sustainable marketplace where second-hand finds meet environmental impact. Buy, sell, and save the planet one transaction at a time.</p>
+            <div class="flex justify-center space-x-4">
+                <button onclick="showSection('features')" class="bg-white text-green-600 px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition-colors">
+                    View Features
+                </button>
+                <button onclick="showSection('workflow')" class="border-2 border-white text-white px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-green-600 transition-colors">
+                    See Workflow
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-6">
+            <div class="flex justify-center space-x-8 py-4">
+                <button onclick="showSection('overview')" class="nav-btn px-4 py-2 rounded-lg font-medium transition-colors hover:bg-green-100 hover:text-green-600">
+                    Overview
+                </button>
+                <button onclick="showSection('features')" class="nav-btn px-4 py-2 rounded-lg font-medium transition-colors hover:bg-green-100 hover:text-green-600">
+                    Features
+                </button>
+                <button onclick="showSection('workflow')" class="nav-btn px-4 py-2 rounded-lg font-medium transition-colors hover:bg-green-100 hover:text-green-600">
+                    Workflow
+                </button>
+                <button onclick="showSection('demo')" class="nav-btn px-4 py-2 rounded-lg font-medium transition-colors hover:bg-green-100 hover:text-green-600">
+                    Demo Flow
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Overview Section -->
+    <section id="overview" class="section-content py-16">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-bold text-gray-800 mb-4">Why EcoFinds?</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">Every year, millions of items end up in landfills while people buy new products. EcoFinds bridges this gap by creating a sustainable marketplace that rewards eco-friendly choices.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8 mb-12">
+                <div class="text-center">
+                    <div class="text-5xl mb-4">♻️</div>
+                    <h3 class="text-xl font-semibold mb-2">Reduce Waste</h3>
+                    <p class="text-gray-600">Give items a second life instead of throwing them away</p>
+                </div>
+                <div class="text-center">
+                    <div class="text-5xl mb-4">💰</div>
+                    <h3 class="text-xl font-semibold mb-2">Save Money</h3>
+                    <p class="text-gray-600">Buy quality items at fraction of retail price</p>
+                </div>
+                <div class="text-center">
+                    <div class="text-5xl mb-4">🌍</div>
+                    <h3 class="text-xl font-semibold mb-2">Help Planet</h3>
+                    <p class="text-gray-600">Track your environmental impact with every purchase</p>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-xl shadow-lg p-8">
+                <h3 class="text-2xl font-bold text-center mb-6">Tech Stack</h3>
+                <div class="grid md:grid-cols-4 gap-6 text-center">
+                    <div class="p-4">
+                        <div class="text-3xl mb-2">⚛️</div>
+                        <h4 class="font-semibold">React</h4>
+                        <p class="text-sm text-gray-600">Frontend Framework</p>
+                    </div>
+                    <div class="p-4">
+                        <div class="text-3xl mb-2">🔥</div>
+                        <h4 class="font-semibold">Firebase</h4>
+                        <p class="text-sm text-gray-600">Auth & Database</p>
+                    </div>
+                    <div class="p-4">
+                        <div class="text-3xl mb-2">🎨</div>
+                        <h4 class="font-semibold">Tailwind</h4>
+                        <p class="text-sm text-gray-600">Styling</p>
+                    </div>
+                    <div class="p-4">
+                        <div class="text-3xl mb-2">📱</div>
+                        <h4 class="font-semibold">PWA</h4>
+                        <p class="text-sm text-gray-600">Mobile Ready</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="section-content py-16 bg-white hidden">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold text-center text-gray-800 mb-12">🔑 Key Features</h2>
+            
+            <!-- Core MVP Features -->
+            <div class="mb-12">
+                <h3 class="text-2xl font-bold text-green-600 mb-6 flex items-center">
+                    <span class="bg-green-100 text-green-600 px-3 py-1 rounded-full text-sm mr-3">CORE MVP</span>
+                    Essential Features
+                </h3>
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div class="feature-card bg-gray-50 p-6 rounded-xl">
+                        <div class="text-3xl mb-3">🔐</div>
+                        <h4 class="font-semibold mb-2">User Authentication</h4>
+                        <p class="text-sm text-gray-600">Sign up & login using Firebase Auth</p>
+                    </div>
+                    <div class="feature-card bg-gray-50 p-6 rounded-xl">
+                        <div class="text-3xl mb-3">👤</div>
+                        <h4 class="font-semibold mb-2">Profile Management</h4>
+                        <p class="text-sm text-gray-600">Basic user profile with username & email</p>
+                    </div>
+                    <div class="feature-card bg-gray-50 p-6 rounded-xl">
+                        <div class="text-3xl mb-3">📝</div>
+                        <h4 class="font-semibold mb-2">Product Listing</h4>
+                        <p class="text-sm text-gray-600">Add, edit, delete your items (CRUD)</p>
+                    </div>
+                    <div class="feature-card bg-gray-50 p-6 rounded-xl">
+                        <div class="text-3xl mb-3">🛍️</div>
+                        <h4 class="font-semibold mb-2">Browse Products</h4>
+                        <p class="text-sm text-gray-600">View product feed with images & details</p>
+                    </div>
+                    <div class="feature-card bg-gray-50 p-6 rounded-xl">
+                        <div class="text-3xl mb-3">🔍</div>
+                        <h4 class="font-semibold mb-2">Search & Filters</h4>
+                        <p class="text-sm text-gray-600">Find items by keyword or category</p>
+                    </div>
+                    <div class="feature-card bg-gray-50 p-6 rounded-xl">
+                        <div class="text-3xl mb-3">📄</div>
+                        <h4 class="font-semibold mb-2">Product Details</h4>
+                        <p class="text-sm text-gray-600">Full info: image, title, description, price</p>
+                    </div>
+                    <div class="feature-card bg-gray-50 p-6 rounded-xl">
+                        <div class="text-3xl mb-3">🛒</div>
+                        <h4 class="font-semibold mb-2">Shopping Cart</h4>
+                        <p class="text-sm text-gray-600">Add products before purchase</p>
+                    </div>
+                    <div class="feature-card bg-gray-50 p-6 rounded-xl">
+                        <div class="text-3xl mb-3">📋</div>
+                        <h4 class="font-semibold mb-2">Purchase History</h4>
+                        <p class="text-sm text-gray-600">See list of previously bought items</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- WOW Features -->
+            <div>
+                <h3 class="text-2xl font-bold text-purple-600 mb-6 flex items-center">
+                    <span class="bg-purple-100 text-purple-600 px-3 py-1 rounded-full text-sm mr-3">WOW FACTOR</span>
+                    Hackathon Edge Features
+                </h3>
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div class="feature-card bg-gradient-to-br from-green-50 to-green-100 p-6 rounded-xl border border-green-200">
+                        <div class="text-3xl mb-3">🌍</div>
+                        <h4 class="font-semibold mb-2">Eco Impact Score</h4>
+                        <p class="text-sm text-gray-600">Shows CO₂ & water saved by buying reused items</p>
+                    </div>
+                    <div class="feature-card bg-gradient-to-br from-yellow-50 to-yellow-100 p-6 rounded-xl border border-yellow-200">
+                        <div class="text-3xl mb-3">🏆</div>
+                        <h4 class="font-semibold mb-2">Gamification</h4>
+                        <p class="text-sm text-gray-600">Badges for active sellers/buyers (Eco Hero, Reuse Champ)</p>
+                    </div>
+                    <div class="feature-card bg-gradient-to-br from-blue-50 to-blue-100 p-6 rounded-xl border border-blue-200">
+                        <div class="text-3xl mb-3">🤖</div>
+                        <h4 class="font-semibold mb-2">Smart Pricing</h4>
+                        <p class="text-sm text-gray-600">AI suggests resale price based on category</p>
+                    </div>
+                    <div class="feature-card bg-gradient-to-br from-purple-50 to-purple-100 p-6 rounded-xl border border-purple-200">
+                        <div class="text-3xl mb-3">📍</div>
+                        <h4 class="font-semibold mb-2">Local Meetups</h4>
+                        <p class="text-sm text-gray-600">Google Maps integration for nearby sellers</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Workflow Section -->
+    <section id="workflow" class="section-content py-16 hidden">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold text-center text-gray-800 mb-12">🛠️ User Workflow</h2>
+            
+            <!-- Authentication Flow -->
+            <div class="mb-12">
+                <h3 class="text-2xl font-bold text-blue-600 mb-6">1. Authentication Flow</h3>
+                <div class="flex flex-wrap justify-center gap-4">
+                    <div class="workflow-step bg-blue-50 border border-blue-200 p-4 rounded-lg flex-1 min-w-64">
+                        <div class="text-2xl mb-2">🔐</div>
+                        <h4 class="font-semibold">Sign Up/Login</h4>
+                        <p class="text-sm text-gray-600">Firebase Auth validates user credentials</p>
+                    </div>
+                    <div class="workflow-step bg-blue-50 border border-blue-200 p-4 rounded-lg flex-1 min-w-64">
+                        <div class="text-2xl mb-2">👤</div>
+                        <h4 class="font-semibold">Profile Setup</h4>
+                        <p class="text-sm text-gray-600">User adds username & can edit profile later</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Selling Flow -->
+            <div class="mb-12">
+                <h3 class="text-2xl font-bold text-green-600 mb-6">2. Selling Workflow</h3>
+                <div class="flex flex-wrap justify-center gap-4">
+                    <div class="workflow-step bg-green-50 border border-green-200 p-4 rounded-lg flex-1 min-w-48">
+                        <div class="text-2xl mb-2">➕</div>
+                        <h4 class="font-semibold">Add Product</h4>
+                        <p class="text-sm text-gray-600">Click "Add Product" button</p>
+                    </div>
+                    <div class="workflow-step bg-green-50 border border-green-200 p-4 rounded-lg flex-1 min-w-48">
+                        <div class="text-2xl mb-2">📝</div>
+                        <h4 class="font-semibold">Fill Details</h4>
+                        <p class="text-sm text-gray-600">Title, Description, Category, Price, Image</p>
+                    </div>
+                    <div class="workflow-step bg-green-50 border border-green-200 p-4 rounded-lg flex-1 min-w-48">
+                        <div class="text-2xl mb-2">💾</div>
+                        <h4 class="font-semibold">Save to Firestore</h4>
+                        <p class="text-sm text-gray-600">Product saved in products collection</p>
+                    </div>
+                    <div class="workflow-step bg-green-50 border border-green-200 p-4 rounded-lg flex-1 min-w-48">
+                        <div class="text-2xl mb-2">📋</div>
+                        <h4 class="font-semibold">My Listings</h4>
+                        <p class="text-sm text-gray-600">View with edit/delete options</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Buying Flow -->
+            <div class="mb-12">
+                <h3 class="text-2xl font-bold text-purple-600 mb-6">3. Buying Workflow</h3>
+                <div class="flex flex-wrap justify-center gap-4">
+                    <div class="workflow-step bg-purple-50 border border-purple-200 p-4 rounded-lg flex-1 min-w-48">
+                        <div class="text-2xl mb-2">🛍️</div>
+                        <h4 class="font-semibold">Browse Feed</h4>
+                        <p class="text-sm text-gray-600">View & search available items</p>
+                    </div>
+                    <div class="workflow-step bg-purple-50 border border-purple-200 p-4 rounded-lg flex-1 min-w-48">
+                        <div class="text-2xl mb-2">👁️</div>
+                        <h4 class="font-semibold">Product Details</h4>
+                        <p class="text-sm text-gray-600">Click item for full information</p>
+                    </div>
+                    <div class="workflow-step bg-purple-50 border border-purple-200 p-4 rounded-lg flex-1 min-w-48">
+                        <div class="text-2xl mb-2">🛒</div>
+                        <h4 class="font-semibold">Add to Cart</h4>
+                        <p class="text-sm text-gray-600">Item added to cart collection</p>
+                    </div>
+                    <div class="workflow-step bg-purple-50 border border-purple-200 p-4 rounded-lg flex-1 min-w-48">
+                        <div class="text-2xl mb-2">💳</div>
+                        <h4 class="font-semibold">Checkout</h4>
+                        <p class="text-sm text-gray-600">Move items to purchases</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Post-Purchase Flow -->
+            <div>
+                <h3 class="text-2xl font-bold text-orange-600 mb-6">4. Post-Purchase Workflow</h3>
+                <div class="flex flex-wrap justify-center gap-4">
+                    <div class="workflow-step bg-orange-50 border border-orange-200 p-4 rounded-lg flex-1 min-w-48">
+                        <div class="text-2xl mb-2">📋</div>
+                        <h4 class="font-semibold">Purchase History</h4>
+                        <p class="text-sm text-gray-600">View all past purchases</p>
+                    </div>
+                    <div class="workflow-step bg-orange-50 border border-orange-200 p-4 rounded-lg flex-1 min-w-48">
+                        <div class="text-2xl mb-2">🌍</div>
+                        <h4 class="font-semibold">Eco Impact</h4>
+                        <p class="text-sm text-gray-600">"You saved 250kg CO₂!"</p>
+                    </div>
+                    <div class="workflow-step bg-orange-50 border border-orange-200 p-4 rounded-lg flex-1 min-w-48">
+                        <div class="text-2xl mb-2">🏆</div>
+                        <h4 class="font-semibold">Unlock Badges</h4>
+                        <p class="text-sm text-gray-600">Eco Hero, Reuse Champ</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Demo Flow Section -->
+    <section id="demo" class="section-content py-16 bg-white hidden">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold text-center text-gray-800 mb-8">⚡ 3-Minute Judge Demo</h2>
+            <p class="text-center text-gray-600 mb-12 text-lg">Perfect presentation flow for hackathon judges</p>
+            
+            <div class="max-w-4xl mx-auto">
+                <div class="space-y-6">
+                    <div class="demo-step bg-gradient-to-r from-blue-50 to-blue-100 p-6 rounded-xl border-l-4 border-blue-500">
+                        <div class="flex items-center mb-3">
+                            <span class="bg-blue-500 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold mr-4">1</span>
+                            <h3 class="text-xl font-bold">Login/Signup Demo</h3>
+                        </div>
+                        <p class="text-gray-700 ml-12">"Here's how a user joins EcoFinds - simple Firebase authentication gets them started in seconds."</p>
+                    </div>
+
+                    <div class="demo-step bg-gradient-to-r from-green-50 to-green-100 p-6 rounded-xl border-l-4 border-green-500">
+                        <div class="flex items-center mb-3">
+                            <span class="bg-green-500 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold mr-4">2</span>
+                            <h3 class="text-xl font-bold">Add Product Demo</h3>
+                        </div>
+                        <p class="text-gray-700 ml-12">"Let's list a second-hand book for sale - see how easy it is to add title, description, price, and photo."</p>
+                    </div>
+
+                    <div class="demo-step bg-gradient-to-r from-purple-50 to-purple-100 p-6 rounded-xl border-l-4 border-purple-500">
+                        <div class="flex items-center mb-3">
+                            <span class="bg-purple-500 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold mr-4">3</span>
+                            <h3 class="text-xl font-bold">Browse Products Demo</h3>
+                        </div>
+                        <p class="text-gray-700 ml-12">"Buyers can see this item in the feed - notice the clean interface and search functionality."</p>
+                    </div>
+
+                    <div class="demo-step bg-gradient-to-r from-yellow-50 to-yellow-100 p-6 rounded-xl border-l-4 border-yellow-500">
+                        <div class="flex items-center mb-3">
+                            <span class="bg-yellow-500 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold mr-4">4</span>
+                            <h3 class="text-xl font-bold">Product Details + Cart</h3>
+                        </div>
+                        <p class="text-gray-700 ml-12">"Click the item → see full details → Add to Cart → Ready to buy. Smooth user experience!"</p>
+                    </div>
+
+                    <div class="demo-step bg-gradient-to-r from-red-50 to-red-100 p-6 rounded-xl border-l-4 border-red-500">
+                        <div class="flex items-center mb-3">
+                            <span class="bg-red-500 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold mr-4">5</span>
+                            <h3 class="text-xl font-bold">Checkout → Purchases</h3>
+                        </div>
+                        <p class="text-gray-700 ml-12">"Complete the purchase and now it appears in purchase history - full transaction cycle works!"</p>
+                    </div>
+
+                    <div class="demo-step bg-gradient-to-r from-emerald-50 to-emerald-100 p-6 rounded-xl border-l-4 border-emerald-500">
+                        <div class="flex items-center mb-3">
+                            <span class="bg-emerald-500 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold mr-4">6</span>
+                            <h3 class="text-xl font-bold">🌍 Eco Impact & Badges</h3>
+                        </div>
+                        <p class="text-gray-700 ml-12">"Here's the WOW factor - by buying second-hand, we saved the environment! See the CO₂ impact and earned badges."</p>
+                    </div>
+                </div>
+
+                <div class="mt-12 bg-gray-800 text-white p-8 rounded-xl">
+                    <h3 class="text-2xl font-bold mb-4 text-center">🎯 Key Talking Points</h3>
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <h4 class="font-semibold mb-2 text-green-400">✅ Technical Excellence</h4>
+                            <ul class="text-sm space-y-1">
+                                <li>• Full-stack React + Firebase implementation</li>
+                                <li>• Real-time database with Firestore</li>
+                                <li>• Responsive design with Tailwind CSS</li>
+                                <li>• Complete CRUD operations working</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold mb-2 text-blue-400">🚀 Innovation Factor</h4>
+                            <ul class="text-sm space-y-1">
+                                <li>• Gamification with eco-badges</li>
+                                <li>• Real environmental impact tracking</li>
+                                <li>• Smart price suggestions (AI-ready)</li>
+                                <li>• Social good + technology solution</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        function showSection(sectionId) {
+            // Hide all sections
+            const sections = document.querySelectorAll('.section-content');
+            sections.forEach(section => {
+                section.classList.add('hidden');
+            });
+            
+            // Show selected section
+            document.getElementById(sectionId).classList.remove('hidden');
+            
+            // Update nav buttons
+            const navButtons = document.querySelectorAll('.nav-btn');
+            navButtons.forEach(btn => {
+                btn.classList.remove('bg-green-100', 'text-green-600');
+            });
+            
+            // Highlight active nav button
+            event.target.classList.add('bg-green-100', 'text-green-600');
+            
+            // Add animation to visible elements
+            setTimeout(() => {
+                const visibleSection = document.getElementById(sectionId);
+                const elements = visibleSection.querySelectorAll('.feature-card, .workflow-step, .demo-step');
+                elements.forEach((el, index) => {
+                    setTimeout(() => {
+                        el.classList.add('animate-fade-in');
+                    }, index * 100);
+                });
+            }, 50);
+        }
+
+        // Show overview by default
+        document.addEventListener('DOMContentLoaded', function() {
+            showSection('overview');
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'97aad8c537264850',t:'MTc1NzEyODk5Ny4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
